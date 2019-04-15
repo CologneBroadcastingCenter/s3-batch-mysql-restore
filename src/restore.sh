@@ -14,7 +14,7 @@ done
 
 set -u
 
-if [[ $LOGLEVEL == "DEBUG" ]]; then
+if [[ $LOGLEVEL == "INFO" ]]; then
 	echo "aws sts get-caller-identity"
 	aws sts get-caller-identity
 	[ $? -eq 0 ] || exit $?
@@ -30,7 +30,7 @@ fi
 for env_key in $(compgen -e); do
 	# If _value_ matches SSM_SECRET, use SSM parameter store
 	if [[ ${!env_key} == SSM_SECRET_* ]]; then
-		if [[ $LOGLEVEL == "DEBUG" ]]; then
+		if [[ $LOGLEVEL == "INFO" ]]; then
 			echo "Mapping $env_key to SSM parameter ${!env_key:11}";
 		fi
 
