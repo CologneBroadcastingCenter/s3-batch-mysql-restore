@@ -13,7 +13,7 @@ phases:
       - echo Entered the pre_build phase...
       - printenv
       - TAG="$REPOSITORY_BRANCH.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
-      - $(aws ecr get-login --no-include-email)
+      - $(aws ecr get-login --no-include-email --registry-ids 261436915280)
   build:
     commands:
       - echo Entered the build phase...
