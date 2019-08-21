@@ -45,7 +45,7 @@ for env_key in $(compgen -e); do
 	fi
 done
 
-echo "Retrieve list of table backups from S3"
+echo "Retrieve list of table backups from S3: $S3_BUCKET/$S3_PATH"
 tables=$(aws s3 ls s3://$S3_BUCKET/$S3_PATH/ | awk '{$1=$2=$3=""; print $0}' | sed 's/^[ \t]*//' | sed '/^\s*$/d'; exit ${PIPESTATUS[0]})
 [ $? -eq 0 ] || exit $?
 
